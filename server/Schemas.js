@@ -1,9 +1,11 @@
 const { Schema } = require("mongoose");
 
 const AccountSchema = new Schema({
-    fullName: String,
-    login: String,
+    email: String,
     password: String,
+    name: String,
+    surname: String,
+    age: Number,
 });
 
 

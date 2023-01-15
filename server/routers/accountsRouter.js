@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    const { fullName, login, password } = req.body;
-    const newAccount = new AccountModel({ fullName, login, password });
+    const { email, password, name, surname, age } = req.body;
+    const newAccount = new AccountModel({ email, password, name, surname, age });
     newAccount.save((err) => {
         if(err){
             res.status(500).send(err);
@@ -26,14 +26,24 @@ router.post("/", (req, res) => {
 
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
-    const { fullName, login, password } = req.body;
-    await AccountModel.findByIdAndUpdate(id, { fullName, login, password }, (err) => {
+    const { email, password, name, surname, age } = req.body;
+    await AccountModel.findByIdAndUpdate(id, { email, password, name, surname, age }, (err) => {
         if(err){
             res.status(500).send(err);
         }else{
             res.status(200).send("ok")
         }
     });
+});
+router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    AccountModel.findByIdAndDelete(id, (err) =>{
+        if(err){
+            res.status(500).send(err);
+        } else {
+            res.status(200).send("deleted");
+        }
+    })
 });
 
 module.exports = router
