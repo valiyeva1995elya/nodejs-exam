@@ -34,8 +34,8 @@ btn.addEventListener("click", () => {
         })
             .then(() => window.location.href = "./index.html")
             .catch(() => alert("err"));
-    }else{ 
-        console.log("err"); 
+    } else {
+        console.log("err");
     }
 });
 

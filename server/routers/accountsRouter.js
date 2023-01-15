@@ -11,6 +11,16 @@ router.get("/", (req, res) => {
         }
     });
 });
+router.get("/:id", (req, res) => {
+    const id = req.params.od;
+    AccountModel.findById(id, (err, results) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(results);
+        }
+    });
+});
 
 router.post("/", (req, res) => {
     const { email, password, name, surname, age } = req.body;
