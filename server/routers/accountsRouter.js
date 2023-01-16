@@ -26,9 +26,9 @@ router.post("/", (req, res) => {
     const { email, password, name, surname, age } = req.body;
     const newAccount = new AccountModel({ email, password, name, surname, age });
     newAccount.save((err) => {
-        if(err){
+        if (err) {
             res.status(500).send(err);
-        }else{
+        } else {
             res.status(200).send("Added new account")
         }
     });
@@ -39,11 +39,12 @@ router.put("/:id", async (req, res) => {
     const { email, password, name, surname, age } = req.body;
     await AccountModel.findByIdAndUpdate(id, { email, password, name, surname, age }
     );
-        res.send("ok")})
+    res.send("ok")
+})
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
-    AccountModel.findByIdAndDelete(id, (err) =>{
-        if(err){
+    AccountModel.findByIdAndDelete(id, (err) => {
+        if (err) {
             res.status(500).send(err);
         } else {
             res.status(200).send("deleted");

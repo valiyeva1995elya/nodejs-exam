@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const accountsRouter = require("./routers/accountsRouter")
+const postsRouter = require("./routers/postsRouter")
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect("mongodb+srv://Elya:elya@cluster0.qmgwgf9.mongodb.net/?retryWri
     }else{
         console.log("start server");
         app.use("/accounts", accountsRouter);
+        app.use("/posts", postsRouter);
         app.listen(3000);
     }
 }); 

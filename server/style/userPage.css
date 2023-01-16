@@ -16,7 +16,7 @@ header{
 }
 .header,
 .footer{
-    padding: 5px 100px;
+    padding: 5px 170px;
 }
 .header-nav{
     width: 600px;
@@ -74,6 +74,7 @@ h1{
     border-radius: 7px;
     cursor: pointer;
     margin-bottom: 5px;
+    margin-left: 25px;
 }
 footer{
     box-shadow: 5px -3px 6px gray;
@@ -86,10 +87,17 @@ footer{
     margin-top: 10px;
 }
 .footer-img{
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50px;
     border: 3px solid black;
+}
+.footer-img-cont{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    margin: 8px -25px 2px 4px;
+    cursor: pointer;
 }
 .text-logo-footer{
     color:  rgb(100 100 100);
@@ -102,6 +110,33 @@ footer{
     
 }
 .text-nav-footer{
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 5px;
+}
+.footer-cont{
+    flex-direction: column;
+}
+.footer-l{
+    width: 30px;
+    height: 16px;
+    padding: 6px;
+    color: rgb(100 100 100);
+    text-align: center;
+    font-size: 13px;
+    text-shadow: 2px 2px 3px rgb(128 128 128);
+    margin-top: 16px;
+    cursor: pointer;
+}
+.border-s{
+    border-left: 1px solid rgb(100 100 100);
+    border-right: 1px solid rgb(100 100 100);
+}
+.c-w{
+    color: rgb(52, 52, 52);
+}
+a:hover { 
+    color: rgb(52, 52, 52);
+}
+.footer-l:hover { 
+    color: rgb(52, 52, 52);
 }

@@ -7,9 +7,20 @@ const AccountSchema = new Schema({
     surname: String,
     age: Number,
 });
+const PostSchema = new Schema({
+    user: String,
+    title: String,
+    post: String,
+    like: String,
+    date: {
+        type: Date,
+        default: Date.now
+    },
+});
 
 
 
 module.exports = {
     AccountSchema,
+    PostSchema
 };
