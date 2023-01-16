@@ -10,22 +10,25 @@ const fetchData = async (route) => {
 
 
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click",  () => {
     let email = document.querySelector('.email').value;
     let password = document.querySelector('.password').value;
-    let arrAccount = []
-    fetch(BASE_URL + "/accounts", { method: "get" })
-    .then(() => fetchData())
-    .catch(() => alert("err"));
-        
+    let payload = []
 
-    for (let i = 0; i <= response.length - 1; i++) {
+    fetch(BASE_URL + "/accounts").then(res => res.json())
+   
+        .then(accounts => JSON.parse(accounts))
+        .catch(() => alert("err"));
+    
+
+    console.log(accounts);
+    for (let i = 0; i <= payload.length - 1; i++) {
         if (!validateEmail(email)) {
             alert("Incorrect email!")
             break
-        } else if (email == response[i].email && password == response[i].password) {
-            localStorage.setItem('user', JSON.stringify(response[i]))
-            
+        } else if (email == payload[i].email && password == payload[i].password) {
+            localStorage.setItem('user', JSON.stringify(payload[i]))
+
             document.location.href = "./homePage.html"
         }
     }

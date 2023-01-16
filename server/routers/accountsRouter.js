@@ -37,14 +37,9 @@ router.post("/", (req, res) => {
 router.put("/:id", async (req, res) => {
     const id = req.params.id;
     const { email, password, name, surname, age } = req.body;
-    await AccountModel.findByIdAndUpdate(id, { email, password, name, surname, age }, (err) => {
-        if(err){
-            res.status(500).send(err);
-        }else{
-            res.status(200).send("ok")
-        }
-    });
-});
+    await AccountModel.findByIdAndUpdate(id, { email, password, name, surname, age }
+    );
+        res.send("ok")})
 router.delete("/:id", (req, res) => {
     const id = req.params.id;
     AccountModel.findByIdAndDelete(id, (err) =>{
