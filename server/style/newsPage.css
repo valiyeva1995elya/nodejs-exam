@@ -18,6 +18,9 @@ header{
 .footer{
     padding: 5px 170px;
 }
+main{
+    color: #6b6b6b;
+}
 .header-nav{
     width: 600px;
 }
@@ -134,5 +137,19 @@ a:hover {
     color: rgb(52, 52, 52);
 }
 .footer-l:hover { 
+    color: rgb(52, 52, 52);
+}
+h4{
+    font-size: 17px;
+    color: rgb(100 100 100);
+    margin: 5px 0;
+}
+h3{
+    font-size: 20px;
+    margin: 5px 0;
+    color: rgb(52, 52, 52);
+}
+i{
+    font-size: 10px;
     color: rgb(52, 52, 52);
 }

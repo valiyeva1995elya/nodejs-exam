@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     });
 });
 router.get("/:id", (req, res) => {
-    const id = req.params.od;
+    const id = req.params.id;
     AccountModel.findById(id, (err, results) => {
         if (err) {
             res.status(500).send(err);

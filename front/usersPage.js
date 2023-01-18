@@ -1,4 +1,6 @@
 const usersContainer = document.querySelector(".users-list");
+const follow = document.querySelector(".fl")
+const unfollow = document.querySelector(".unfl")
 
 
 const BASE_URL = "http://localhost:3000";
@@ -39,8 +41,8 @@ const drawCars = async () => {
             <td>${user.name}</td>
             <td>${user.surname}</td>
             <td>${user.age}</td>
-            <td> <button class="btn-main">Follow</button><br>
-            <button class="btn-main">Unfollow</button></td>
+            <td> <button class="btn-main fl">Follow</button><br>
+            <button class="btn-main unfl">Unfollow</button></td>
             </tr>
                 
         
@@ -51,3 +53,4 @@ const drawCars = async () => {
     }
 };
 drawCars()
+

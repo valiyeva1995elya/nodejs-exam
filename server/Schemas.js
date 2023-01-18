@@ -6,6 +6,7 @@ const AccountSchema = new Schema({
     name: String,
     surname: String,
     age: Number,
+    
 });
 const PostSchema = new Schema({
     user: String,
@@ -14,13 +15,14 @@ const PostSchema = new Schema({
     like: String,
     date: {
         type: Date,
-        default: Date.now
+        default: new Date().getMinutes()
     },
 });
 
 
 
+
 module.exports = {
     AccountSchema,
-    PostSchema
+    PostSchema,
 };

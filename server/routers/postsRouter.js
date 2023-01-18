@@ -35,6 +35,13 @@ router.post("/", (req,res) => {
         }
     });
 });
+router.put("/:id", async (req, res) => {
+    const id = req.params.id;
+    const { user, title, post } = req.body;
+    await PostModel.findByIdAndUpdate(id, { user, title, post }
+    );
+    res.send("ok")
+})
 
 router.delete("/:id", (req,res) => {
     const id = req.params.id;

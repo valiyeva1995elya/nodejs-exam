@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 const btn = document.querySelector(".btn");
 
 
@@ -13,21 +15,22 @@ const fetchData = async (route) => {
 btn.addEventListener("click",  () => {
     let email = document.querySelector('.email').value;
     let password = document.querySelector('.password').value;
-    let payload = []
 
-    fetch(BASE_URL + "/accounts").then(res => res.json())
+    fetch(BASE_URL + "/accounts").then(response => response.json())
    
-        .then(accounts => JSON.parse(accounts))
-        .catch(() => alert("err"));
-    
+        .then(result => {
+            localStorage.setItem('Users', JSON.stringify(result))
+        })
+        .catch(() => console.log(err));
+    const users = JSON.parse(localStorage.getItem('Users'))
 
-    console.log(accounts);
-    for (let i = 0; i <= payload.length - 1; i++) {
+        console.log(users);
+    for (let i = 0; i <= users.length - 1; i++) {
         if (!validateEmail(email)) {
             alert("Incorrect email!")
             break
-        } else if (email == payload[i].email && password == payload[i].password) {
-            localStorage.setItem('user', JSON.stringify(payload[i]))
+        } else if (email == users[i].email && password == users[i].password) {
+            localStorage.setItem('user', JSON.stringify(users[i]))
 
             document.location.href = "./homePage.html"
         }

@@ -25,7 +25,7 @@ const drawCars = async () => {
                 <img class="like-img" src="./img/like (1).png" alt="">
                 ${post.like}
                 </div> 
-                <p class="text_date">${post.date}</p>
+                <p class="text_date"><i>${post.date}</i></p>
                 
             </div>
                 
