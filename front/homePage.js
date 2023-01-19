@@ -94,8 +94,7 @@ function addPost() {
     const titlePost = document.querySelector(".post-title").value
     const textPost = document.querySelector(".post-text").value
     const payload = {
-        name: user.name,
-        surname: user.surname,
+        email: user.email,
         title: titlePost,
         post: textPost,
     }
@@ -120,7 +119,7 @@ const drawMyPosts = async () => {
     const posts = await fetchData("/posts");
     let myPostsOnly = []
     for (let i = 0; i < posts.length; i++) {
-        if (posts[i].name == user.name) {
+        if (posts[i].email == user.email) {
             myPostsOnly.push(posts[i])
         }
     }
@@ -130,7 +129,7 @@ const drawMyPosts = async () => {
     for (const p of myPostsOnly) {
         myPosts.innerHTML += `
             <div class="post_item">
-            <h4>${p.name} ${p.surname}</h4>
+            <h4>${p.email} </h4>
             <h3 class="text_title">${p.title}</h3>
             <p class="text_post">${p.post}</p>
             <div>

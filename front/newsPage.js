@@ -21,7 +21,7 @@ const drawCars = async () => {
     for (const post of posts) {
         postsContainer.innerHTML += `
             <div class="post_item">
-            <h4>${post.name} ${post.surname}</h4>
+            <h4>${post.email}</h4>
             <h3>${post.title}</h3>
             <p class="text_post">${post.post}</p>
             <div>

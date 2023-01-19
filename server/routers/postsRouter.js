@@ -25,8 +25,8 @@ router.get("/:id", (req, res) => {
 
 
 router.post("/", (req, res) => {
-    const { name, surname, title, post } = req.body;
-    const newPost = new PostModel({ name, surname, title, post, like: 0 });
+    const { email, title, post } = req.body;
+    const newPost = new PostModel({ email, title, post, like: 0 });
     newPost.save((err) => {
         if (err) {
             res.status(500).send(err);
