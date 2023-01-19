@@ -1,7 +1,4 @@
-// const { response } = require("express");
-
 const btn = document.querySelector(".btn");
-
 
 const BASE_URL = "http://localhost:3000";
 
@@ -9,7 +6,6 @@ const fetchData = async (route) => {
     const response = await fetch(BASE_URL + route);
     return await response.json();
 };
-
 
 
 btn.addEventListener("click",  () => {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,30 @@
     <title>Home page</title>
     <link rel="stylesheet" href="http://localhost:3000/static/homePage.css">
 </head>
+
 <body>
+    <div class="back-block">
+        <div class="edit-data">
+            <p>Имя</p>
+            <input id="edName" type="text">
+            <p>Фамилия</p>
+            <input id="edSurname" type="text">
+            <p>Возраст</p>
+            <input id="edAge" type="number"><br>
+            <button onclick="saveNewData()" class="btn mt-20">Сохранить</button>
+            <button onclick="cancelBtn()" class="btn mt-20">Отмена</button>
+        </div>
+    </div>
+    <div class="back-block2">
+        <div class="edit-data2">
+            <p>Заголовок</p>
+            <input id="edTitle" type="text">
+            <p>Пост</p>
+            <textarea name="" id="edPost" cols="20" rows="5"></textarea>
+            <button onclick="saveNewPost()" class="btn mt-20">Сохранить</button>
+            <button onclick="cancelBtn()" class="btn mt-20">Отмена</button>
+        </div>
+    </div>
     <header>
         <div class="header flex jc-sb">
             <img class="header-img" src="./img/IMG_AC9FA0F843A4-1.jpeg" alt="">
@@ -18,30 +42,35 @@
                 </div>
                 <div class="flex jc-sb">
                     <a class="c-w" href="./homePage.html">Личный кабинет</a>
-                    <button class="header-btn">Exit</button>
+                    <button onclick="logOut()" class="header-btn">Exit</button>
                 </div>
             </div>
         </div>
     </header>
-    
-    <main>
 
+    <main>
+        
         <div class="date">
             <div class="data_text">
+                Имя: <span class="acc hpName"></span><br>
+                Фамилия: <span class="acc hpSurname"></span><br>
+                Возраст: <span class="acc hpAge"></span><br>
+            </div>
+            <button class="btn-data" onclick="editProf()">редактировать профиль</button>
+        </div>
+        <hr>
 
-            </div>
-            <div class="data_change">
-                <button>редактировать профиль</button>
-                <button>изменить пароль</button>
-            </div>
+        <div class="create_post flex">
+            <h2>Новый пост</h2>
+            <input class="post-title" type="text" placeholder="Тема">
+            <textarea class="post-text" name="post" id="" cols="40" rows="10"></textarea>
+            <button onclick="addPost()" class="post-btn">Добавить</button>
+        </div>
+        <hr>
+
+        <div class="my_posts flex">
 
         </div>
-
-        <div class="create_post">
-            <textarea name="post" id="" cols="30" rows="10"></textarea>
-
-        </div>
-        <div class="my_post"></div>
 
     </main>
 
@@ -77,5 +106,7 @@
             </div>
         </div>
     </footer>
+    <script src="./homePage.js"></script>
 </body>
+
 </html>
