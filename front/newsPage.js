@@ -1,7 +1,7 @@
 const postsContainer = document.querySelector(".posts");
 
 let user = JSON.parse(localStorage.getItem('user'))
-if(user == null){
+if (user == null) {
     window.location.href = "./index.html"
 
 }
@@ -11,33 +11,46 @@ const fetchData = async (route) => {
     const response = await fetch(BASE_URL + route);
     return await response.json();
 };
+function logOut() {
+    localStorage.removeItem("user")
+    document.location.href = "./index.html"
+}
 
 
-const drawCars = async () => {
-    const posts = await fetchData("/posts");
-
-
-
-    for (const post of posts) {
+    
+const drawNews = async () => {
+    postsContainer.innerHTML = ""
+    const allPosts = await fetchData("/posts");
+    
+    allPosts.forEach(post => {
         postsContainer.innerHTML += `
             <div class="post_item">
-            <h4>${post.email}</h4>
-            <h3>${post.title}</h3>
-            <p class="text_post">${post.post}</p>
-            <div>
+                <h4>${post.email}</h4>
+                <h3>${post.title}</h3>
+                <p class="text_post">${post.post}</p>
                 <div>
-                <img class="like-img" src="./img/like (1).png" alt="">
-                ${post.like}
-                </div> 
-                <p class="text_date"><i>${post.date}</i></p>
-                
-            </div>
-                
-        
-            </div>
-               
+                    <div>
+                        <img class="like-img" src="./img/like (1).png" alt="">
+                        ${post.like}
+                        <button onclick="likePost('${post._id}')">+</button>
+                        <button onclick="unlikePost('${post._id}')">-</button>
+                    </div> 
+                    <p class="text_date"><i>${post.date}</i></p>
+                    
+                </div>
+            </div>      
         `
+    });
+}
 
-    }
-};
-drawCars()
+
+const likePost = async (postId) => {
+    await fetch(BASE_URL + `/posts/like/${postId}`);
+    drawNews()
+    
+}
+const unlikePost = async (postId) =>{
+    await fetch(BASE_URL + `/posts/unlike/${postId}`);
+    drawNews()
+}
+drawNews()

@@ -20,7 +20,7 @@ btn.addEventListener("click",  () => {
         .catch(() => console.log(err));
     const users = JSON.parse(localStorage.getItem('Users'))
 
-        console.log(users);
+        
     for (let i = 0; i <= users.length - 1; i++) {
         if (!validateEmail(email)) {
             alert("Incorrect email!")

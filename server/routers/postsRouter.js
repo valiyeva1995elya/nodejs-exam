@@ -53,4 +53,18 @@ router.delete("/:id", (req, res) => {
         }
     });
 });
+router.get("/like/:id", async (req, res) => {
+    const postId = req.params.id
+    const post = await PostModel.findById(postId);
+    await PostModel.findByIdAndUpdate(postId,{like: post.like +1 })
+    res.status(201).send("Ok");
+});
+
+router.get("/unlike/:id", async (req, res) => {
+    const postId = req.params.id
+    const post = await PostModel.findById(postId);
+    await PostModel.findByIdAndUpdate(postId,{like: post.like - 1})
+    res.status(201).send("Ok");
+});
+
 module.exports = router

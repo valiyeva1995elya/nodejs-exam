@@ -4,7 +4,7 @@ const PostSchema = new Schema({
     email: String,
     title: String,
     post: String,
-    like: String,
+    like: Number,
     date: {
         type: Date,
         default: Date.now
@@ -20,12 +20,8 @@ const AccountSchema = new Schema({
     follows: []
 });
 
-const FollowSchema = new Schema({
-    idUser: String,
-    follow: [AccountSchema]
-});
+
 module.exports = {
     AccountSchema,
     PostSchema,
-    FollowSchema
 };
