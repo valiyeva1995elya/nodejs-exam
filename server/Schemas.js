@@ -1,5 +1,14 @@
 const { Schema } = require("mongoose");
 
+const AccountSchema = new Schema({
+    email: String,
+    password: String,
+    name: String,
+    surname: String,
+    age: Number,
+    follows: [],
+});
+
 const PostSchema = new Schema({
     email: String,
     title: String,
@@ -10,16 +19,6 @@ const PostSchema = new Schema({
         default: Date.now
     },
 });
-const AccountSchema = new Schema({
-    email: String,
-    password: String,
-    name: String,
-    surname: String,
-    age: Number,
-    posts: [PostSchema],
-    follows: []
-});
-
 
 module.exports = {
     AccountSchema,

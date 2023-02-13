@@ -1,5 +1,5 @@
 const express = require("express");
-const { AccountModel, PostModel } = require("../Models");
+const { AccountModel } = require("../Models");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -90,24 +90,27 @@ router.delete("/:id", (req, res) => {
     })
 });
 
-router.put("/follow/:id", async (req, res) => {
-    const id = req.params.id;
-    const { newData } = req.body
-    const user = await AccountModel.findById(id)
-    const newFollowers = user.follows
-    newFollowers.push(newData)
-    await AccountModel.findByIdAndUpdate(id, {follows: newFollowers});
-    res.status(201).send("ok")
-})
+router.post("/follow", async (req, res) => {
+    const { userId, followedUserId } = req.body;
+    const user = await AccountModel.findById(userId);
 
-router.put("/unfollow/:id", async (req, res) => {
-    const id = req.params.id;
-    const { newData } = req.body
-    const user = await AccountModel.findById(id)
-    const newFollowers = user.follows
-    const index = newFollowers.indexOf(newData)
-    newFollowers.splice(index, 1)
-    await AccountModel.findByIdAndUpdate(id, {followers: newFollowers});
-    res.status(201).send("ok")
-})
+    user.follows.push(followedUserId)
+    user.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(201).send("User followed");
+        }
+    });
+});
+
+
+router.post("/unfollow", async (req, res) => {
+    const { userId, followedUserId } = req.body;
+    const user = await AccountModel.findById(userId);
+
+    await AccountModel.findByIdAndUpdate(userId,{follows: user.follows.filter((user) => user != followedUserId)})
+    res.status(201).send("User unfollowed");
+
+});
 module.exports = router
