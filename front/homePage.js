@@ -123,6 +123,7 @@ const drawMyPosts = async () => {
             myPostsOnly.push(posts[i])
         }
     }
+    console.log(myPostsOnly);
     myPosts.innerHTML = ""
     
 
@@ -164,11 +165,11 @@ function changePost(id) {
     blPost.style.display = "block";
     bl2Post.style.backgroundColor = "rgb(196, 193, 193, 0.5)"
     
-    localStorage.setItem("idChangePost", JSON.stringify(id))
+    localStorage.setItem("idChangePost", id)  
 }
 
-let id = JSON.parse(localStorage.getItem("idChangePost"))
 function saveNewPost() {
+    let id = localStorage.getItem("idChangePost")
     const newTitle = document.querySelector("#edTitle").value
     const newPost = document.querySelector("#edPost").value
 
@@ -187,5 +188,5 @@ function saveNewPost() {
         .then(() => alert("Ok"))
         .catch(() => alert("err"))
     bl2Post.style.display = "none";
-   
+    
 }
